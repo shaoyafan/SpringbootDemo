@@ -1,0 +1,53 @@
+server:
+  port: 8001
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    master:
+      url: jdbc:mysql://localhost:3306/db01?useSSL=true
+      username: root
+      password: 123456
+    slave:
+      url: jdbc:mysql://192.168.253.128:3306/db01?useSSL=true
+      username: root
+      password: 123456
+
+
+  #data:
+   # mongodb:
+    #  uri: mongodb://localhost:27017/test
+
+
+mybatis:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+
+
+#rocketMQ
+#nameserver地址
+apache:
+  rocketmq:
+    producer:
+      producerGroup: test_Producer
+    namesrvAddr: localhost:9876
+
+    consumer:
+       PushConsumer: test_Producer
+
+
+
+xxl:
+  job:
+    admin:
+      addresses: http://localhost:8022/xxl-job-admin/
+    executor:
+      appname: xxl-job-executor-sample
+      logpath: /data/applogs/xxl-job/jobhandler
+      logretentiondays: 30
+      address:
+      ip:
+      port: 9999
+    accessToken:
+logging:
+  config: classpath:logback.xml
+
